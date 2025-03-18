@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+:root {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@layer base {
+  :root {
+    --background: 99 0% 100%;
+    --foreground: 99 0% 10%;
+    --card: 99 0% 100%;
+    --card-foreground: 99 0% 15%;
+    --popover: 99 0% 100%;
+    --popover-foreground: 99 95% 10%;
+    --primary: 99 100% 32.9%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 99 10% 90%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 61 10% 95%;
+    --muted-foreground: 99 0% 40%;
+    --accent: 61 10% 90%;
+    --accent-foreground: 99 0% 15%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 99 0% 100%;
+    --border: 99 20% 82%;
+    --input: 99 20% 50%;
+    --ring: 99 100% 32.9%;
+    --radius: 0.75rem;
+  }
+  .dark {
+    --background: 99 10% 10%;
+    --foreground: 99 0% 100%;
+    --card: 99 0% 10%;
+    --card-foreground: 99 0% 100%;
+    --popover: 99 10% 5%;
+    --popover-foreground: 99 0% 100%;
+    --primary: 99 100% 32.9%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 99 10% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 61 10% 25%;
+    --muted-foreground: 99 0% 65%;
+    --accent: 61 10% 25%;
+    --accent-foreground: 99 0% 95%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 99 0% 100%;
+    --border: 99 20% 50%;
+    --input: 99 20% 50%;
+    --ring: 99 100% 32.9%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
