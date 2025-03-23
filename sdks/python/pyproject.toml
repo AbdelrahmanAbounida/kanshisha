@@ -1,0 +1,19 @@
+[project]
+name = "kanshisha"
+version = "0.1.0"
+description = "kanshsia python sdk"
+authors = [
+    {name = "abdelrahman abounida", email = "abdelrahmanaboneda@gmail.com"},
+]
+dependencies = ["httpx>=0.28.1", "pydantic>=2.10.6"]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true

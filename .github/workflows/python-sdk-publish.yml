@@ -1,0 +1,49 @@
+name: Publish Python SDK to PyPI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - created
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  pypi-publish:
+    name: upload release to PyPI
+    if: startsWith(github.event.release.tag_name, 'python-sdk-') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/${{ github.event.repository.name }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pdm-project/setup-pdm@v4
+        with:
+          python-version: "3.11"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Publish package distributions to PyPI
+        run: pdm publish
+        # with:
+        #   packages_dir: python-sdk/dist/
+        #   user: __token__
+        #   password: ${{ secrets.PYPI_API_TOKEN }}
+      # - name: Publish package distributions to PyPI
+      #   uses: pypa/gh-action-pypi-publish@v1.12.3
+      #   with:
+      #     repository-url: https://upload.pypi.org/legacy/
+      #     verbose: true

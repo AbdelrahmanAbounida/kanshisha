@@ -1,0 +1,10 @@
+# List of Tools to be used in this app 
+
+
+## 1- TAsk Queue 
+- BullMQ vs Bull 
+- Cloudflare Queues 
+- amqplib
+- upstash workflow 
+- kafka 
+- AWS (MSK, MQ, )
