@@ -5,7 +5,7 @@ from uuid import UUID
 ID = TypeVar(UUID, int, str,)
 
 
-class BaseAPIModel(BaseModel):
+class APIResponse(BaseModel):
 
     def json():
         pass 
@@ -15,3 +15,11 @@ class BaseAPIModel(BaseModel):
 
     class Config:
         """TODO:: add more configurations """
+
+
+Type = TypeVar("Type", bound=APIResponse)
+GetType = TypeVar("GetType", bound=APIResponse)
+ListType = TypeVar("ListType", bound=APIResponse)
+PostType = TypeVar("PostType", bound=APIResponse)
+PutType = TypeVar("PutType", bound=APIResponse)
+DeleteType = TypeVar("DeleteType", bound=APIResponse)

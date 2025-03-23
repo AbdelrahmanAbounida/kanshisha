@@ -1,17 +1,18 @@
 from moraqib._exceptions import MoraqibError 
-from moraqib.resources.trace import Trace
-from typing import Optional, Mapping , Any
-from typing import TypeVar
+from moraqib.resources.traces import Trace
+from typing import Optional, Mapping , Any,TypeVar,Generic
 import httpx 
+from httpx import Response
 import os
 
 Body = TypeVar("Body", Mapping[str, Any],None)
+T = TypeVar("T",None)
 
-
-class Moraqib():
+class Moraqib(Generic[T]):
     """
     Moraqib is a Python class for managing a Moraqib's inventory.
     """
+    ## TODO:: extract 
 
     traces: Trace
     def __init__(self,
@@ -54,7 +55,7 @@ class Moraqib():
             path:str,
             *,
             stream:bool=False
-            ):
+            ) -> Response:
         return self.http_client.get(path,headers=self._headers,stream=stream) # TODO:: handle custom  stream Response 
 
     def post(self,
@@ -62,10 +63,19 @@ class Moraqib():
             *,
             body: Optional[Body],
             stream:bool=False
-            ):
+            ) -> Response:
         # TODO:: use generics to handle cast operation 
         return self.http_client.post(path,headers=self._headers,data=body,stream=stream) # TODO:: handle custom  stream Response 
 
+    def list(self,
+            path:str,   
+             *,
+            stream:bool=False
+             ) -> Response :
+        """TODO:: paginated response"""
+        return self.http_client.get(path,headers=self._headers,stream=stream) # TODO:: handle custom  stream Response 
+         
+    
     def put(self):
         pass 
 

@@ -1,10 +1,10 @@
 # TODO:: see how to auto generate using openapi spces 
 from typing import Optional
-from moraqib.types.common import ID, BaseAPIModel
+from moraqib.types.common import ID, APIResponse
 from pydantic import Field
 import datetime
 
-class Trace(BaseAPIModel):
+class TraceBody(APIResponse):
     name: Optional[str]
     """The name of the trace"""
     latency: Optional[float]
@@ -29,11 +29,18 @@ class Trace(BaseAPIModel):
     """The list of tags of the trace"""
 
 
-class CreateTrace(BaseAPIModel):
+class CreateTrace(APIResponse):
     name: Optional[str]
     used_id: Optional[str]
     session_id: Optional[str]
     tags: list[str] = []
     public: Optional[bool] = Field(type=bool, default=False)
+
+
+class UpdateTrace(CreateTrace):
+    trace_id: ID 
+
+class DeleteTrace(APIResponse):
+    trace_id: ID
 
 # TODO:: add more traces CRUD class bodies 
