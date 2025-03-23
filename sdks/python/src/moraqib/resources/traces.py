@@ -13,7 +13,14 @@ class Trace(Resource):
     def create(self,*args,**kwargs):
         return self._client.post(
            self.endpoint,
-           
+
+        )
+    
+    def list(self,*args,**kwargs):
+        return self._client.list(
+            self.endpoint,
+            *args,
+            **kwargs,
         )
 
 class AsyncTrace(AsyncResource):

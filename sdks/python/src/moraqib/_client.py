@@ -13,7 +13,7 @@ class Moraqib():
     Moraqib is a Python class for managing a Moraqib's inventory.
     """
 
-    trace: Trace
+    traces: Trace
     def __init__(self,
                  base_url:Optional[str] | httpx.URL=None,
                  *,
@@ -40,7 +40,7 @@ class Moraqib():
         )
 
         # Main Resources 
-        self.trace = Trace(self)
+        self.traces = Trace(self)
 
     @property
     def _headers(self):

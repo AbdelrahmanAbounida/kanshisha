@@ -1,16 +1,17 @@
-# from moraqib import Moraqib 
+from moraqib._client import Moraqib 
 
 
-# client = Moraqib(api_key="123213")
+client = Moraqib(api_key="123213")
 
-# trace = client.trace.create(
-#     name="Trace 1",
-#     description="A trace for testing",
-#     status="pending",
-#     data={"key": "value"}
-# )
+trace = client.trace.create(
+    name="Trace 1",
+    description="A trace for testing",
+    status="pending",
+    data={"key": "value"}
+)
 
-# print(trace.to_json(ident=2))
+print(trace.to_json(ident=2))
 
-# traces = client.trace.list() # add limits 
+traces = client.trace.list() # add limits 
+
 
