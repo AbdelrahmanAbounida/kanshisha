@@ -36,7 +36,11 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Change to SDK directory
+        run: cd sdks/python
+
       - name: Publish package distributions to PyPI
+        working-directory: ./sdks/python
         run: pdm publish
         # with:
         #   packages_dir: python-sdk/dist/
