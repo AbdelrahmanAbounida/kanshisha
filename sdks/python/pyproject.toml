@@ -1,7 +1,7 @@
 [project]
-name = "kanshisha"
+name = "moraqib"
 version = "0.1.0"
-description = "kanshsia python sdk"
+description = "moraqib python sdk"
 authors = [
     {name = "abdelrahman abounida", email = "abdelrahmanaboneda@gmail.com"},
 ]
