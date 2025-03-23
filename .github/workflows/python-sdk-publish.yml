@@ -40,12 +40,11 @@ jobs:
         run: cd sdks/python
 
       - name: Publish package distributions to PyPI
-        working-directory: ./sdks/python
         run: pdm publish
-        # with:
-        #   packages_dir: python-sdk/dist/
-        #   user: __token__
-        #   password: ${{ secrets.PYPI_API_TOKEN }}
+        with:
+          packages_dir: sdk/python/dist/
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
       # - name: Publish package distributions to PyPI
       #   uses: pypa/gh-action-pypi-publish@v1.12.3
       #   with:
