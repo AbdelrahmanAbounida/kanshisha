@@ -12,17 +12,21 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
 
 jobs:
   pypi-publish:
     name: upload release to PyPI
-    if: startsWith(github.event.release.tag_name, 'python-sdk-') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
+    if: github.event.release && startsWith(github.event.release.tag_name, 'python-sdk-') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
     environment:
       name: pypi
       url: https://pypi.org/p/${{ github.event.repository.name }}
+
+    defaults:
+      run:
+        working-directory: sdks/python
 
     steps:
       - uses: actions/checkout@v4
@@ -35,17 +39,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Change to SDK directory
-        run: cd sdks/python
+      - name: Build package distributions to PyPI
+        run: pdm build
+        working-directory: sdks/python
 
       - name: Publish package distributions to PyPI
-        run: pdm publish
+        uses: pypa/gh-action-pypi-publish@v1.12.3
         with:
-          packages_dir: sdk/python/dist/
+          packages_dir: sdks/python/dist/
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
-      # - name: Publish package distributions to PyPI
-      #   uses: pypa/gh-action-pypi-publish@v1.12.3
-      #   with:
-      #     repository-url: https://upload.pypi.org/legacy/
-      #     verbose: true
