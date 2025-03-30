@@ -1,0 +1,36 @@
+services:
+  # moraqib-backend:
+  #   # image:
+  #   depends_on:
+  #     # - redis
+  #     - cassandra
+  #   ports:
+  #     - "5000:5000"
+  #   environment:
+  #     - REDIS_HOST=redis
+  #     - REDIS_PORT=6379
+
+  # redis:
+  #   image: redis:alpine
+
+  cassandra:
+    image: cassandra:latest
+    ports:
+      - "9042:9042"
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cassandra
+      - CASSANDRA_DC=datacenter1
+      - CASSANDRA_ENDPOINT_SNITCH=SimpleStrategy
+    volumes:
+      - cassandra_data:/var/lib/cassandra/data
+    restart: always
+
+  # moraqib-web:
+  #   # image:
+  #   depends_on:
+  #     - moraqib-backend
+  #     - redis
+  #     - cassandra
+
+volumes:
+  cassandra_data: {}

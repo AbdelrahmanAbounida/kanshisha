@@ -11,6 +11,7 @@ import { CustomLogger } from './common/logging/app-logger';
 import { AwsModule } from './common/services/aws/aws.module';
 import { RedisModule } from './common/services/redis/redis.module';
 import { UsersModule } from './modules/users/users.module';
+import { TracesModule } from './modules/traces/traces.module';
 
 @Module({
   imports: [
@@ -27,9 +28,9 @@ import { UsersModule } from './modules/users/users.module';
     // 3- modules
     AuthModule,
     UsersModule,
-    DatabaseModule,
     AwsModule,
     RedisModule,
+    TracesModule,
   ],
   controllers: [],
   providers: [
